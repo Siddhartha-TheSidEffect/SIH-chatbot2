@@ -3,7 +3,7 @@ import random
 import datetime
 import time
 
-# Configure the page
+
 st.set_page_config(
     page_title="MindfulChat - Mental Health Companion",
     page_icon="💙",
@@ -11,7 +11,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for calm and peaceful design
+
 st.markdown("""
 <style>
     .main {
@@ -195,7 +195,7 @@ def generate_response(user_message):
     """Generate contextual mental health consultant responses"""
     message = user_message.lower()
     
-    # Crisis-related responses (important safety responses)
+    
     if any(word in message for word in ['suicide', 'kill myself', 'end it all', 'don\'t want to live', 'hurt myself']):
         return """I'm very concerned about what you're sharing with me. Your life has value and meaning, even when it doesn't feel that way. Please reach out for immediate support:
 
@@ -206,7 +206,7 @@ def generate_response(user_message):
 
 You don't have to go through this alone. There are people who want to help you through this difficult time. Please consider reaching out to a mental health professional, trusted friend, or family member right now."""
     
-    # Anxiety-related responses
+   
     if any(word in message for word in ['anxious', 'anxiety', 'worried', 'panic', 'nervous', 'fear']):
         responses = [
             "It's completely natural to feel anxious sometimes. Let's take a moment to breathe together. Try the 4-7-8 breathing technique: inhale for 4 counts, hold for 7, exhale for 8. What specific thoughts are contributing to your anxiety right now?",
@@ -216,7 +216,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # Depression-related responses
+   
     if any(word in message for word in ['depressed', 'depression', 'sad', 'down', 'empty', 'hopeless', 'worthless']):
         responses = [
             "Thank you for sharing something so personal with me. Depression can make everything feel heavy and colorless. You're taking a brave step by reaching out. What's one small thing that used to bring you joy?",
@@ -226,7 +226,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # Stress-related responses
+    
     if any(word in message for word in ['stressed', 'stress', 'overwhelmed', 'pressure', 'busy', 'exhausted']):
         responses = [
             "Stress can feel like carrying the weight of the world. It's important to acknowledge what you're going through. Let's break this down - what are the main sources of stress you're facing right now?",
@@ -236,7 +236,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # Sleep-related responses
+   
     if any(word in message for word in ['sleep', 'insomnia', 'tired', 'exhausted', 'can\'t sleep', 'sleepless']):
         responses = [
             "Sleep struggles can affect everything - your mood, energy, and ability to cope. It's like trying to function on empty. What does your bedtime routine look like, and what thoughts tend to keep you awake?",
@@ -246,7 +246,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # Relationship-related responses
+    
     if any(word in message for word in ['relationship', 'family', 'friend', 'partner', 'lonely', 'isolated', 'conflict']):
         responses = [
             "Relationships can be both our greatest source of joy and our deepest challenge. It sounds like you're navigating something difficult right now. What's been weighing on your heart in your connections with others?",
@@ -256,7 +256,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # Self-esteem related responses
+    
     if any(word in message for word in ['worthless', 'stupid', 'failure', 'hate myself', 'confidence', 'self-doubt']):
         responses = [
             "Those critical thoughts about yourself sound painful. Our inner critic can be incredibly harsh, often saying things we'd never say to a friend. You have inherent worth that doesn't depend on achievements or others' opinions. What triggered these thoughts about yourself?",
@@ -266,7 +266,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # Work/Career related responses
+    
     if any(word in message for word in ['work', 'job', 'career', 'boss', 'colleague', 'burnout', 'workplace']):
         responses = [
             "Work-related stress is incredibly common and can significantly impact our mental health. It sounds like you're dealing with some challenges at work. What aspects of your work situation are causing you the most distress?",
@@ -276,7 +276,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # Greeting responses
+    
     if any(word in message for word in ['hello', 'hi', 'hey', 'good morning', 'good evening', 'good afternoon']):
         responses = [
             "Hello there! I'm glad you've decided to reach out today. This is a safe, non-judgmental space where you can share whatever is on your mind. How are you feeling right now?",
@@ -286,7 +286,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # Thank you responses
+    
     if any(word in message for word in ['thank you', 'thanks', 'grateful', 'appreciate']):
         responses = [
             "You're so welcome. It's an honor to be part of your healing journey. Remember, seeking support is a sign of strength, not weakness. How else can I support you today?",
@@ -296,7 +296,7 @@ You don't have to go through this alone. There are people who want to help you t
         ]
         return random.choice(responses)
     
-    # General supportive responses
+    
     general_responses = [
         "Thank you for sharing that with me. Your feelings are valid, and it takes courage to open up. Can you tell me more about what you're experiencing right now?",
         "I hear you, and I want you to know that you're not alone in whatever you're facing. Sometimes just talking about our struggles can help lighten the load. What's been on your mind lately?",
@@ -314,7 +314,7 @@ def format_time():
     """Format current time for messages"""
     return datetime.datetime.now().strftime("%I:%M %p")
 
-# Initialize session state
+
 if 'messages' not in st.session_state:
     st.session_state.messages = [
         {
@@ -327,7 +327,7 @@ if 'messages' not in st.session_state:
 if 'input_text' not in st.session_state:
     st.session_state.input_text = ""
 
-# Header
+
 st.markdown("""
 <div class="chat-header">
     <div class="chat-title">
@@ -339,7 +339,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Chat messages container
+
 chat_container = st.container()
 
 with chat_container:
@@ -363,27 +363,27 @@ with chat_container:
     
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Input area
+
 st.markdown('<div class="input-container">', unsafe_allow_html=True)
 
 user_input = st.chat_input("Share what's on your mind... I'm here to listen.")
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Handle message sending
+
 if user_input and user_input.strip():
-    # Add user message
+    
     st.session_state.messages.append({
         'text': user_input,
         'is_user': True,
         'timestamp': format_time()
     })
     
-    # Show typing indicator
+   
     with st.spinner("Thinking..."):
-        time.sleep(1)  # Simulate thinking time
+        time.sleep(1)  
         
-        # Generate and add bot response
+        
         response = generate_response(user_input)
         st.session_state.messages.append({
             'text': response,
@@ -391,10 +391,10 @@ if user_input and user_input.strip():
             'timestamp': format_time()
         })
     
-    # Rerun to show new messages
+    
     st.rerun()
 
-# Disclaimer
+
 st.markdown("""
 <div class="disclaimer">
     <strong>Important:</strong> This is a supportive space, but in crisis situations, please contact emergency services (911) or a mental health professional. For immediate support: National Suicide Prevention Lifeline (988) or Crisis Text Line (text HOME to 741741).
